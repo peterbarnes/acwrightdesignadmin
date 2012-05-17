@@ -204,7 +204,7 @@ class Acwrightdesignadmin < Sinatra::Base
   end
   
   get '/users/?' do
-    @users = User.all(:active => true).sort(:username)
+    @users = User.where(:active => true).sort(:username)
     haml :'users/index'
   end
   
