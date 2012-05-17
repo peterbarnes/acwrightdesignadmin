@@ -1,0 +1,9 @@
+%section{:id => 'auth'}
+  .container
+    %form{:id => 'login', :action => '/login', :method => 'post'}
+      %div
+        %input{:id => 'username', :name => 'username', :type => 'text', :placeholder => 'Username'}
+      %div
+        %input{:id => 'password', :name => 'password', :type => 'password', :placeholder => 'Password'}
+      %div{:class => 'action'}
+        %input{:id => 'login', :name => 'login', :type => 'submit', :value => 'Login'}

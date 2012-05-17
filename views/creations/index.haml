@@ -1,0 +1,28 @@
+%section{:id => 'creations'}
+  .container
+    %h1 Creations
+    %p
+      %a{:href => '/creations/create'} New Creation
+    %table
+      %thead
+        %tr
+          %th ID
+          %th Name
+          %th Thumbnail
+          %th Description
+          %th URLs
+          %th Edit
+          %th Delete
+      %tbody
+        - @creations.each do |creation|
+          %tr
+            %td= creation.id
+            %td= creation.name
+            %td
+              %img{:src => "#{creation.thumbnail}", :alt => "#{creation.thumbnail}"}
+            %td= creation.description
+            %td
+            %td
+              %a{:href => "/creations/#{creation.id}/edit"} Edit
+            %td
+              %a{:href => "/creations/#{creation.id}/delete"} Delete

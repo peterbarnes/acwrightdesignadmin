@@ -1,0 +1,21 @@
+%section{:id => 'users'}
+  .container
+    %p
+      %a{:href => '/users'} Back
+    - unless @user.nil?
+      %ul
+        - @user.errors.each do |error|
+          %li= "#{error[0].to_s} #{error[1]}"
+    %form{:id => 'user', :action => "#{@user.nil? ? '/users' : '/users/' + @user.id}", :method => 'post'}
+      %div
+        %input{:id => 'first_name', :name => 'first_name', :type => 'text', :value => "#{@user.first_name unless @user.nil?}", :placeholder => 'First Name'}
+      %div
+        %input{:id => 'last_name', :name => 'last_name', :type => 'text', :value => "#{@user.last_name unless @user.nil?}", :placeholder => 'Last Name'}
+      %div
+        %input{:id => 'username', :name => 'username', :type => 'text', :value => "#{@user.username unless @user.nil?}", :placeholder => 'Username'}
+      %div
+        %input{:id => 'password', :name => 'password', :type => 'password', :placeholder => 'Password'}
+      %div
+        %input{:id => 'password_confirmation', :name => 'password_confirmation', :type => 'password', :placeholder => 'Password Confirmation'}
+      %div{:class => 'action'}
+        %input{:id => 'save', :name => 'save', :type => 'submit', :value => 'Save'}

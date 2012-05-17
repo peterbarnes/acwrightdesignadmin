@@ -1,0 +1,17 @@
+%section{:id => 'creations'}
+  .container
+    %p
+      %a{:href => '/creations'} Back
+    - unless @creation.nil?
+      %ul
+        - @creation.errors.each do |error|
+          %li= "#{error[0].to_s} #{error[1]}"
+    %form{:id => 'creation', :action => "#{@creation.nil? ? '/creations' : '/creations/' + @creation.id}", :method => 'post'}
+      %div
+        %input{:id => 'name', :name => 'name', :type => 'text', :value => "#{@creation.name unless @creation.nil?}", :placeholder => 'Name'}
+      %div
+        %input{:id => 'thumbnail', :name => 'thumbnail', :type => 'text', :value => "#{@creation.thumbnail unless @creation.nil?}", :placeholder => 'Thumbnail'}
+      %div
+        %textarea{:id => 'description', :name => 'description', :placeholder => 'Description'}= @creation.description unless @creation.nil?
+      %div{:class => 'action'}
+        %input{:id => 'save', :name => 'save', :type => 'submit', :value => 'Save'}

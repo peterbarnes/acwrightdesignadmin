@@ -1,0 +1,23 @@
+%section{:id => 'users'}
+  .container
+    %h1 Users
+    %p
+      %a{:href => '/users/create'} New User
+    %table
+      %thead
+        %tr
+          %th First Name
+          %th Last Name
+          %th Username
+          %th Edit
+          %th Delete
+      %tbody
+        - @users.each do |user|
+          %tr
+            %td= user.first_name
+            %td= user.last_name
+            %td= user.username
+            %td
+              %a{:href => "/users/#{user.id}/edit"} Edit
+            %td
+              %a{:href => "/users/#{user.id}/delete"} Delete

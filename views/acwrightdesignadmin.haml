@@ -1,0 +1,47 @@
+!!! 5
+%html{:lang => 'en'}
+  %head
+    %base{:href => "http://#{request.env['HTTP_HOST']}"}
+    %meta{:charset => 'utf-8'}
+    %meta{:name => 'description', :content => 'A.C. Wright Design | Admin'}
+    %link{:rel => 'apple-touch-icon', :type => 'image/png', :href => '/images/icon_57.png'}
+    %link{:rel => 'apple-touch-icon', :type => 'image/png', :sizes => '72x72', :href => '/images/icon_72.png'}
+    %link{:rel => 'apple-touch-icon', :type => 'image/png', :sizes => '114x114', :href => '/images/icon_114.png'}
+    %link{:rel => 'shortcut icon', :type => 'image/vnd.microsoft.icon', :href => '/favicon.ico'}
+    %link{:rel => 'icon', :type => 'image/vnd.microsoft.icon', :href => '/favicon.ico'}
+    <!--[if ! lte IE 6]><!-->
+    %link{:rel => 'stylesheet', :href => '/stylesheets/acwrightdesignadmin.css', :title => 'A.C. Wright Design', :media => 'screen, projection', :type => 'text/css'}
+    %link{:rel => 'stylesheet', :href => "http://f.fontdeck.com/s/css/SHL1Q62RRv8EROgGSyefc+MAifY/#{request.env['SERVER_NAME']}/17208.css", :title => 'A.C. Wright Design', :media => 'screen, projection', :type => 'text/css'}
+    <!--<![endif]-->
+    <!--[if lte IE 6]><!-->
+    %link{:rel=>'stylesheet', :href=>'http://universal-ie6-css.googlecode.com/files/ie6.1.1.css', :media => 'screen, projection', :type => 'text/css'}
+    <!--<![endif]-->
+    /[if lt IE 9]
+      %script{:type => 'text/javascript', :src => 'http://html5shiv.googlecode.com/svn/trunk/html5.js'}
+    %script{:type => 'text/javascript', :src => '/javascripts/jquery.min.js'}
+    %script{:type => 'text/javascript', :src => '/javascripts/modernizr.js'}
+    %script{:type => 'text/javascript', :src => '/javascripts/acwrightdesignadmin.js'}
+    :javascript
+      /* Initiate the application javascript and run */
+      $(document).ready(function(){
+      
+        acwrightdesignadmin.run();
+      
+      });
+    %title A.C. Wright Design | Admin
+  %body
+    %header
+      .container
+        %a{:href => '/', :title => 'A.C. Wright Design'}
+          %img{:src => '/images/logo.png', :alt => 'A.C. Wright Designn'}
+        %ul
+          %li{:class => 'creations'}
+            %a{:href => '/creations'} Creations
+          %li{:class => 'contacts'}
+            %a{:href => '/contacts'} Contacts
+          %li{:class => 'urls'}
+            %a{:href => '/urls'} URLs
+          %li{:class => 'users'}
+            %a{:href => '/users'} Users
+    .container
+      = yield

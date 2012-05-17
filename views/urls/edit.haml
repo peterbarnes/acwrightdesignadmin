@@ -1,0 +1,17 @@
+%section{:id => 'urls'}
+  .container
+    %p
+      %a{:href => '/urls'} Back
+    - unless @url.nil?
+      %ul
+        - @url.errors.each do |error|
+          %li= "#{error[0].to_s} #{error[1]}"
+    %form{:id => 'url', :action => "#{@url.nil? ? '/urls' : '/urls/' + @url.id}", :method => 'post'}
+      %div
+        %input{:id => 'name', :name => 'name', :type => 'text', :value => "#{@url.name unless @url.nil?}", :placeholder => 'Name'}
+      %div
+        %input{:id => 'url', :name => 'url', :type => 'text', :value => "#{@url.url unless @url.nil?}", :placeholder => 'URL'}
+      %div
+        %input{:id => 'creation', :name => 'creation', :type => 'text', :value => "#{@url.creation_id unless @url.nil?}", :placeholder => 'Creation ID'}
+      %div{:class => 'action'}
+        %input{:id => 'save', :name => 'save', :type => 'submit', :value => 'Save'}

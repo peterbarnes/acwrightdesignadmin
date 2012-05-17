@@ -1,0 +1,23 @@
+%section{:id => 'urls'}
+  .container
+    %h1 Users
+    %p
+      %a{:href => '/urls/create'} New URL
+    %table
+      %thead
+        %tr
+          %th Creation
+          %th Name
+          %th URL
+          %th Edit
+          %th Delete
+      %tbody
+        - @urls.each do |url|
+          %tr
+            %td= url.creation.name unless url.creation.nil?
+            %td= url.name
+            %td= url.url
+            %td
+              %a{:href => "/urls/#{url.id}/edit"} Edit
+            %td
+              %a{:href => "/urls/#{url.id}/delete"} Delete
