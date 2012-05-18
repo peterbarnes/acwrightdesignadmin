@@ -126,6 +126,33 @@ class Acwrightdesignadmin < Sinatra::Base
     redirect '/creations'
   end
   
+  # Contacts
+  
+  before '/contacts/?*' do
+    authenticate!
+  end
+  
+  get '/contacts/?' do
+    @contacts = Contact.where(:active => true).sort(:created_at)
+    haml :'contacts/index'
+  end
+  
+  get '/contacts/:id/view/?' do
+    @contact = Contact.find(params[:id])
+    haml :'contacts/view'
+  end
+  
+  get '/contacts/:id/delete/?' do
+    @contact = Contact.find(params[:id])
+    
+    unless @contact.nil?
+      @contact.active = false
+      @contact.save
+    end
+    
+    redirect '/contacts'
+  end
+  
   # URLS
   
   before '/urls/?*' do

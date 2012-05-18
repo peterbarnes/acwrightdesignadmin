@@ -1,0 +1,22 @@
+%section{:id => 'contacts'}
+  .container
+    %h1 Contacts
+    %table
+      %thead
+        %tr
+          %th Date
+          %th Name
+          %th Email
+          %th View
+          %th Delete
+      %tbody
+        - @contacts.each do |contact|
+          %tr
+            %td= contact.created_at.localtime
+            %td= contact.name
+            %td
+              %a{:href => "mailto:#{contact.email}"}= contact.email
+            %td
+              %a{:href => "/contacts/#{contact.id}/view"} View
+            %td
+              %a{:href => "/contacts/#{contact.id}/delete"} Delete

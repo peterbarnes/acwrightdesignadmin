@@ -19,9 +19,15 @@
             %td= creation.id
             %td= creation.name
             %td
-              %img{:src => "#{creation.thumbnail}", :alt => "#{creation.thumbnail}"}
+              %a{:href => "#{creation.thumbnail}"}
+                %img{:src => "#{creation.thumbnail}", :alt => "#{creation.thumbnail}"}
             %td= creation.description
             %td
+              - unless creation.urls.nil?
+                %ul
+                  - creation.urls.each do |url|
+                    %li
+                      %a{:href => "#{url.url}"}= url.name
             %td
               %a{:href => "/creations/#{creation.id}/edit"} Edit
             %td

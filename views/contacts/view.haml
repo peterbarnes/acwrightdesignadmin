@@ -1,0 +1,11 @@
+%section{:id => 'contacts'}
+  .container
+    %p
+      %a{:href => '/contacts'} Back
+    %div
+      %p= @contact.name
+    %div
+      %p
+        %a{:href => "mailto:#{@contact.email}"}= @contact.email
+    %div
+      %p= @contact.message
