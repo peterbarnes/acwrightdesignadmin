@@ -176,6 +176,7 @@ class Acwrightdesignadmin < Sinatra::Base
     unless @url.nil?
       @url.name = params[:name]
       @url.url = params[:url]
+      @url.creation_id = params[:creation_id]
 
       if @url.save
         redirect '/urls'
@@ -193,6 +194,7 @@ class Acwrightdesignadmin < Sinatra::Base
     unless @url.nil?
       @url.name = params[:name]
       @url.url = params[:url]
+      @url.creation_id = params[:creation_id]
 
       if @url.save
         redirect '/urls'
