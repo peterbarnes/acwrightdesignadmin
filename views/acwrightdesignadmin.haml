@@ -34,14 +34,17 @@
       .container
         %a{:href => '/', :title => 'A.C. Wright Design'}
           %img{:src => '/images/logo.png', :alt => 'A.C. Wright Designn'}
-        %ul
-          %li{:class => 'creations'}
-            %a{:href => '/creations'} Creations
-          %li{:class => 'contacts'}
-            %a{:href => '/contacts'} Contacts
-          %li{:class => 'urls'}
-            %a{:href => '/urls'} URLs
-          %li{:class => 'users'}
-            %a{:href => '/users'} Users
+        - if @current_user
+          %ul
+            %li{:class => 'creations'}
+              %a{:href => '/creations'} Creations
+            %li{:class => 'contacts'}
+              %a{:href => '/contacts'} Contacts
+            %li{:class => 'urls'}
+              %a{:href => '/urls'} URLs
+            %li{:class => 'users'}
+              %a{:href => '/users'} Users
+            %li{:class => 'logout'}
+              %a{:href => '/logout'} Logout
     .container
       = yield
